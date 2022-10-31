@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npx eslint --ext .js,.vue,.ts,.jsx,.tsx src
+
+# 每次它只会在你本地 commit 之前，校验你提交的内容是否符合你本地配置的 eslint规则,校验结果会出现以下2种情况
+# 如果符合规则：则会提交成功。
+# 如果不符合规则：它会自动执行 eslint --fix 尝试帮你自动修复，
+    # 如果修复成功则会帮你把修复好的代码提交，
+    # 如果失败，则会提示你错误，让你修好这个错误之后才能允许你提交代码
+npx lint-staged
