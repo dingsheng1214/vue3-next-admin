@@ -5,5 +5,10 @@ import App from './App.vue'
 import '@/assets/styles/index.scss'
 import router from './router'
 import store from './store'
+import 'virtual:svg-icons-register'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
-createApp(App).use(ElementPlus).use(router).use(store).mount('#app')
+const app = createApp(App).use(ElementPlus).use(router).use(store)
+app.component('svg-icon', SvgIcon)
+
+app.mount('#app')
