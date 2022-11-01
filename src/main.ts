@@ -19,7 +19,7 @@ import App from './App.vue'
 // Pinia状态管理
 import store from './store'
 
-const app = createApp(App).use(ElementPlus).use(store).use(router)
+const app = createApp(App).use(ElementPlus).use(router).use(store)
 app.component('svg-icon', SvgIcon)
 
 app.mount('#app')

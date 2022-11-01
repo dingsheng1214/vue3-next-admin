@@ -21,7 +21,8 @@ export const sysProfile = {
     id: '0',
     username: 'super-admin',
     title: '超级管理员',
-    avatar: 'https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png',
+    avatar:
+      'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
     permission: {
       menus: ['userManage', 'roleList', 'permissionList', 'articleRanking', 'articleCreate'],
       points: ['distributeRole', 'importUser', 'removeUser', 'distributePermission'],

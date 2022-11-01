@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { TOKEN } from '@/assets/js/utils/constant'
-import { getItem, setItem } from '@/assets/js/utils/storage'
+import { getItem, setItem, clearStorage } from '@/assets/js/utils/storage'
 import { login, getUserInfo } from '@/api/sys'
 import { UserInfo } from '#/sys'
 
@@ -8,19 +8,20 @@ export interface UserState {
   userInfo: UserInfo
   token?: string
 }
+const initUserInfo: UserInfo = {
+  _id: '',
+  id: '',
+  title: '',
+  username: '',
+  avatar: '',
+  role: [],
+  permission: {},
+}
 
 export const useUserStore = defineStore({
   id: 'app-user',
   state: (): UserState => ({
-    userInfo: {
-      _id: '',
-      id: '',
-      title: '',
-      username: '',
-      avatar: '',
-      role: [],
-      permission: {},
-    },
+    userInfo: { ...initUserInfo },
     token: getItem(TOKEN),
   }),
   getters: {},
@@ -34,6 +35,11 @@ export const useUserStore = defineStore({
       const { username, password } = loginData
       const res = await login({ username, password })
       this.setToken(res.token)
+    },
+    async logout() {
+      this.setToken('')
+      this.setUserInfo({ ...initUserInfo })
+      clearStorage()
     },
     /**
      * 获取用户信息

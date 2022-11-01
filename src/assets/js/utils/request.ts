@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '../../../store/modules/user'
 import { TOKEN } from './constant'
 import { getItem } from '@/assets/js/utils/storage'
 
@@ -46,7 +48,13 @@ service.interceptors.response.use(
   },
   // 请求失败
   (error) => {
-    // TODO: 将来处理token失效问题
+    if (error?.response?.data?.code === 403) {
+      ElMessage.warning('token失效,请重新登陆')
+      const userStore = useUserStore()
+      const router = useRouter()
+      userStore.logout()
+      router.push('/login')
+    }
     ElMessage.error(error.message)
     return Promise.reject(new Error(error.message))
   },
