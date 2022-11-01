@@ -1,31 +1,78 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
-      <el-form-item>
+      <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon="https://res.lgdsunday.club/user.svg" />
         </span>
-        <el-input placeholder="username" name="username" type="text"></el-input>
+        <el-input
+          placeholder="username"
+          name="username"
+          type="text"
+          v-model="loginForm.username"
+        ></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon="password" />
         </span>
-        <el-input placeholder="password" name="password"></el-input>
-        <span class="show-pwd">
-          <svg-icon icon="eye" />
+        <el-input
+          placeholder="password"
+          name="password"
+          :type="showPwd ? 'text' : 'password'"
+          v-model="loginForm.password"
+        ></el-input>
+        <span class="show-pwd" @click="showPwd = !showPwd">
+          <svg-icon icon="eye-open" v-if="showPwd" />
+          <svg-icon icon="eye" v-else />
         </span>
       </el-form-item>
 
-      <el-button class="login-btn" type="primary">登录</el-button>
+      <el-button class="login-btn" type="primary" @click="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { FormInstance, FormRules } from 'element-plus'
+  import { ref, unref } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useUserStore } from '@/store'
+
+  const loginFormRef = ref<FormInstance>()
+  const loginForm = ref({
+    username: 'super-admin',
+    password: '123456',
+  })
+  const loginRules = ref<FormRules>({
+    username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
+    password: [{ required: true, trigger: 'blur', message: '请输入密码' }],
+  })
+  const showPwd = ref(false)
+
+  const loading = ref(false)
+  const userStore = useUserStore()
+  const router = useRouter()
+  const handleLogin = () => {
+    loading.value = true
+    unref(loginFormRef)?.validate(async (validate) => {
+      if (validate) {
+        try {
+          const res = await userStore.login({ ...unref(loginForm) })
+          router.push('/')
+          console.log(res)
+        } catch (err) {
+          console.log(err)
+        } finally {
+          loading.value = false
+        }
+      }
+    })
+  }
+</script>
 
 <style lang="scss" scoped>
   $bg: #2d3a4b;

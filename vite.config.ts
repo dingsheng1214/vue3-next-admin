@@ -12,6 +12,12 @@ export default defineConfig({
     port: 4000, // 设置服务启动端口号
     open: true, // 设置服务启动时是否自动打开浏览器
     cors: true, // 允许跨域
+    proxy: {
+      '/api': {
+        target: 'https://api.imooc-admin.lgdsunday.club',
+        changeOrigin: true,
+      },
+    },
   },
   resolve: {
     alias: {

@@ -1,14 +1,25 @@
 import { createApp } from 'vue'
+// element-ui
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import App from './App.vue'
-import '@/assets/styles/index.scss'
-import router from './router'
-import store from './store'
-import 'virtual:svg-icons-register'
-import SvgIcon from '@/components/SvgIcon/index.vue'
 
-const app = createApp(App).use(ElementPlus).use(router).use(store)
+// SvgIcon
+import SvgIcon from '@/components/SvgIcon/index.vue'
+import 'virtual:svg-icons-register'
+
+// 路由及路由守卫
+import router from './router'
+import './permission'
+
+// 全局样式
+import '@/assets/styles/index.scss'
+
+// 根组件
+import App from './App.vue'
+// Pinia状态管理
+import store from './store'
+
+const app = createApp(App).use(ElementPlus).use(store).use(router)
 app.component('svg-icon', SvgIcon)
 
 app.mount('#app')
