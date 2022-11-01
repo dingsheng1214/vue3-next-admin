@@ -61,9 +61,8 @@
     unref(loginFormRef)?.validate(async (validate) => {
       if (validate) {
         try {
-          const res = await userStore.login({ ...unref(loginForm) })
+          await userStore.login({ ...unref(loginForm) })
           router.push('/')
-          console.log(res)
         } catch (err) {
           console.log(err)
         } finally {

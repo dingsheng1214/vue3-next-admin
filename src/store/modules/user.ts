@@ -1,16 +1,8 @@
 import { defineStore } from 'pinia'
 import { TOKEN } from '@/assets/js/utils/constant'
 import { getItem, setItem } from '@/assets/js/utils/storage'
-// import { login } from '@/api/sys'
-
-export interface UserInfo {
-  userId: string | number
-  username: string
-  realName?: string
-  avatar?: string
-  desc?: string
-  homePath?: string
-}
+import { login, getUserInfo } from '@/api/sys'
+import { UserInfo } from '#/sys'
 
 export interface UserState {
   userInfo: UserInfo
@@ -21,10 +13,13 @@ export const useUserStore = defineStore({
   id: 'app-user',
   state: (): UserState => ({
     userInfo: {
-      userId: '',
+      _id: '',
+      id: '',
+      title: '',
       username: '',
-      realName: '',
       avatar: '',
+      role: [],
+      permission: {},
     },
     token: getItem(TOKEN),
   }),
@@ -36,18 +31,16 @@ export const useUserStore = defineStore({
      * @returns
      */
     async login(loginData: { username: string; password: string }) {
-      // const { username, password } = loginData
-      // const res = await login({ username, password })
-      const res = {
-        status: 200,
-        token: '************',
-        data: { ...loginData },
-      }
-      if (res.status === 200) {
-        this.setToken(res.token)
-        return Promise.resolve(res.data)
-      }
-      return Promise.reject(new Error(''))
+      const { username, password } = loginData
+      const res = await login({ username, password })
+      this.setToken(res.token)
+    },
+    /**
+     * 获取用户信息
+     */
+    async getUserInfo() {
+      const res = await getUserInfo({ token: this.token })
+      this.setUserInfo(res)
     },
     setToken(token: string) {
       this.token = token

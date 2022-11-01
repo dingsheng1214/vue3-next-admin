@@ -1,14 +1,40 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
+import { TOKEN } from './constant'
+import { getItem } from '@/assets/js/utils/storage'
 
+type CommonResponse = {
+  success: boolean
+  code: number
+  message: string
+  data: any
+}
 const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_API,
   timeout: 5000,
 })
 
+/**
+ * 请求拦截器
+ */
+service.interceptors.request.use(
+  (config) => {
+    const token = getItem(TOKEN)
+    if (token) {
+      config.headers!.Authorization = token
+    }
+    return config
+  },
+  (error) => {
+    console.log(error)
+  },
+)
+/**
+ * 响应拦截器
+ */
 service.interceptors.response.use(
   // 请求成功
-  (response) => {
+  (response: AxiosResponse<CommonResponse>) => {
     const { data, success, message } = response.data
     if (success) {
       // 业务成功 -> 返回解析后的数据
