@@ -48,7 +48,7 @@ service.interceptors.response.use(
   },
   // 请求失败
   (error) => {
-    if (error?.response?.data?.code === 403) {
+    if (error?.response?.data?.code === 401) {
       ElMessage.warning('token失效,请重新登陆')
       const userStore = useUserStore()
       const router = useRouter()
