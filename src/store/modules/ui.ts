@@ -10,7 +10,7 @@ const initUiState: UiState = {
 
 const useUiStore = defineStore({
   id: 'app-ui',
-  state: (): UiState => initUiState,
+  state: (): UiState => ({ ...initUiState }),
   getters: {},
   actions: {
     // 切换侧边栏是否收缩

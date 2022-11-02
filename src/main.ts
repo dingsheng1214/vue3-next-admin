@@ -2,24 +2,38 @@ import { createApp } from 'vue'
 // element-ui
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import en from 'element-plus/lib/locale/lang/en'
 
 // SvgIcon
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import 'virtual:svg-icons-register'
 
-// 路由及路由守卫
-import router from './router'
-import './permission'
+// 路由及
+import router from '@/router'
+// 路由守卫
+import '@/permission'
 
 // 全局样式
 import '@/assets/styles/index.scss'
 
 // 根组件
-import App from './App.vue'
-// Pinia状态管理
-import store from './store'
+import App from '@/App.vue'
+// 状态管理 Pinia
+import store from '@/store'
+// 国际化 i18n
+import { i18n } from '@/assets/js/i18n'
 
-const app = createApp(App).use(ElementPlus).use(router).use(store)
+import { getItem } from '@/assets/js/utils/storage'
+import { LANGUAGE } from '@/assets/js/utils/constant'
+
+const app = createApp(App)
+  .use(router)
+  .use(store)
+  .use(i18n)
+  .use(ElementPlus, {
+    local: getItem(LANGUAGE) === 'en' ? en : zhCn,
+  })
 app.component('svg-icon', SvgIcon)
 
 app.mount('#app')

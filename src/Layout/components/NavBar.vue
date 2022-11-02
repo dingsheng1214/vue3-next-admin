@@ -16,8 +16,12 @@
     </div>
 
     <div class="right-menu">
+      <!-- 国际化 -->
+      <div class="language-container">
+        <LangSelect />
+      </div>
+      <!-- 头像 -->
       <div class="avatar-container">
-        <!-- 头像下拉 -->
         <el-dropdown>
           <div class="avatar-wrapper">
             <el-avatar shape="square" :src="userInfo.avatar" />
@@ -25,10 +29,12 @@
           </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>首页</el-dropdown-item>
-              <el-dropdown-item>项目地址</el-dropdown-item>
-              <el-dropdown-item divided @click="handleLogout">退出登录</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.center') }}</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
+              <el-dropdown-item divided @click="handleLogout">
+                {{ $t('msg.navBar.logout') }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -41,6 +47,7 @@
   import { computed } from 'vue'
   import { useRouter } from 'vue-router'
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
+  import LangSelect from '@/components/LangSelect/index.vue'
   import { useUserStore, useUiStore } from '@/store'
 
   const router = useRouter()
@@ -86,6 +93,10 @@
       display: flex;
       align-items: center;
       margin-right: 20px;
+
+      .language-container {
+        margin-right: 10px;
+      }
       .avatar-container {
         cursor: pointer;
       }

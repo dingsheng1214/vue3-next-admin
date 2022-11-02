@@ -3,12 +3,11 @@
   <div
     v-if="isExternal"
     :style="externalIconStyle"
-    :class="className"
-    class="svg-external-icon svg-icon"
+    :class="['svg-external-icon', 'svg-icon', className]"
   ></div>
 
   <!-- 内部图标 -->
-  <svg v-else :class="className" class="svg-icon">
+  <svg v-else :class="['svg-icon', className]">
     <use :xlink:href="symbolId" />
   </svg>
 </template>

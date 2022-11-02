@@ -2,7 +2,10 @@
   <div class="login-container">
     <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <div class="lang-container">
+          <LangSelect />
+        </div>
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -31,31 +34,37 @@
         </span>
       </el-form-item>
 
-      <el-button class="login-btn" type="primary" @click="handleLogin">登录</el-button>
+      <el-button class="login-btn" type="primary" @click="handleLogin">{{
+        $t('msg.login.loginBtn')
+      }}</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { FormInstance, FormRules } from 'element-plus'
-  import { ref, unref } from 'vue'
+  import { FormInstance } from 'element-plus'
+  import { computed, ref, unref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { useI18n } from 'vue-i18n'
+  import LangSelect from '@/components/LangSelect/index.vue'
   import { useUserStore } from '@/store'
+
+  const userStore = useUserStore()
+  const router = useRouter()
+  const i18n = useI18n()
 
   const loginFormRef = ref<FormInstance>()
   const loginForm = ref({
     username: 'super-admin',
     password: '123456',
   })
-  const loginRules = ref<FormRules>({
-    username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
-    password: [{ required: true, trigger: 'blur', message: '请输入密码' }],
-  })
+  const loginRules = computed(() => ({
+    username: [{ required: true, trigger: 'blur', message: i18n.t('msg.login.usernameRule') }],
+    password: [{ required: true, trigger: 'blur', message: i18n.t('msg.login.passwordRule') }],
+  }))
   const showPwd = ref(false)
-
   const loading = ref(false)
-  const userStore = useUserStore()
-  const router = useRouter()
+
   const handleLogin = () => {
     loading.value = true
     unref(loginFormRef)?.validate(async (validate) => {
@@ -138,6 +147,12 @@
         margin: 0px auto 40px auto;
         text-align: center;
         font-weight: bold;
+      }
+      .lang-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
       }
     }
 

@@ -5,10 +5,11 @@
   <SvgIcon v-else :icon="icon" />
 
   <!-- title -->
-  <span>{{ title }}</span>
+  <span>{{ generateTitle(title) }}</span>
 </template>
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue'
+  import { generateTitle } from '@/assets/js/utils/i18n'
 
   interface Props {
     path: string

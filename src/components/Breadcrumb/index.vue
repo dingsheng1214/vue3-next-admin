@@ -7,10 +7,10 @@
           v-if="index < matched.length - 1"
           @click="handleLinkClick(item.path)"
         >
-          {{ item.meta.title }}
+          {{ generateTitle(item.meta.title as string) }}
         </span>
         <span class="no-redirect" v-else>
-          {{ item.meta.title }}
+          {{ generateTitle(item.meta.title as string) }}
         </span>
       </el-breadcrumb-item>
     </transition-group>
@@ -21,6 +21,7 @@
   import { ArrowRight } from '@element-plus/icons-vue'
   import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
+  import { generateTitle } from '@/assets/js/utils/i18n'
 
   const route = useRoute()
   const router = useRouter()
