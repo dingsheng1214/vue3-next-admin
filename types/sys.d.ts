@@ -1,3 +1,5 @@
+import { RouteLocationNormalizedLoaded } from 'vue-router'
+
 export interface Role {
   id: string
   title: string
@@ -25,3 +27,5 @@ export interface SearchPoolItem {
   path: string
   title: string[]
 }
+
+export type TagView = RouteLocationNormalizedLoaded & { title: string }

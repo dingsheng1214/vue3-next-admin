@@ -2,9 +2,8 @@ import { useUserStore } from './store/modules/user'
 // 处理路由守卫
 import router from '@/router'
 import { getItem } from '@/assets/js/utils/storage'
-import { TOKEN } from '@/assets/js/utils/constant'
+import { TOKEN, ROUTE_WHITE_LIST } from '@/assets/js/utils/constant'
 
-const whiteList = ['/login']
 /**
  * 路由前置守卫
  * to: 要到哪里去
@@ -26,7 +25,7 @@ router.beforeEach(async (to, from, next) => {
     }
   }
   // 2 未登录 -> 只能进入白名单页面
-  else if (whiteList.indexOf(toPath) > -1) {
+  else if (ROUTE_WHITE_LIST.indexOf(toPath) > -1) {
     next()
   } else {
     next('/login')

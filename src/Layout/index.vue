@@ -5,6 +5,8 @@
     <div class="main-container">
       <!-- 顶部 NavBar -->
       <NavBar />
+      <!-- TagViews -->
+      <TagViews />
       <!-- 主内容 AppMain -->
       <AppMain />
     </div>
@@ -15,6 +17,7 @@
   import { useUiStore } from '@/store'
   import AppMain from './components/AppMain.vue'
   import NavBar from './components/NavBar.vue'
+  import TagViews from '@/components/TagViews/index.vue'
   import SideBar from './components/SideBar/index.vue'
 
   const uiStore = useUiStore()
