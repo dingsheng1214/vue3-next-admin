@@ -1,12 +1,12 @@
 <template>
   <div class="app-wrapper" :class="isCollapse ? 'hideSidebar' : ''">
     <!-- 左侧 SideBar -->
-    <SideBar class="sidebar-container" />
+    <SideBar class="sidebar-container" id="guide-sidebar" />
     <div class="main-container">
       <!-- 顶部 NavBar -->
       <NavBar />
       <!-- TagViews -->
-      <TagViews />
+      <TagViews id="guide-tags" />
       <!-- 主内容 AppMain -->
       <AppMain />
     </div>

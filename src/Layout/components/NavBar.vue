@@ -3,7 +3,7 @@
     <div class="left-menu">
       <!-- 侧边栏收缩按钮 -->
       <div class="collapse-wrapper" @click="triggerCollapse">
-        <el-icon :size="20">
+        <el-icon :size="20" id="guide-hamburger">
           <Expand v-if="isCollapse" />
           <Fold v-else />
         </el-icon>
@@ -11,25 +11,22 @@
 
       <!-- 面包屑 -->
       <div>
-        <Breadcrumb />
+        <Breadcrumb id="guide-breadcrumb" />
       </div>
     </div>
 
     <div class="right-menu">
-      <!-- 全屏切换 -->
-      <div class="fullscreen-container">
-        <Search />
-      </div>
+      <!-- 引导页 -->
+      <div class="icon-container"><Guide /></div>
 
       <!-- 全屏切换 -->
-      <div class="fullscreen-container">
-        <FullScrren />
-      </div>
+      <div class="icon-container"><Search /></div>
+
+      <!-- 全屏切换 -->
+      <div class="icon-container"><FullScrren /></div>
 
       <!-- 国际化 -->
-      <div class="language-container">
-        <LangSelect />
-      </div>
+      <div class="icon-container"><LangSelect /></div>
 
       <!-- 头像 -->
       <div class="avatar-container">
@@ -61,6 +58,7 @@
   import LangSelect from '@/components/LangSelect/index.vue'
   import FullScrren from '@/components/FullScreen/index.vue'
   import Search from '@/components/Search/index.vue'
+  import Guide from '@/components/Guide/index.vue'
   import { useUserStore, useUiStore } from '@/store'
 
   const router = useRouter()
@@ -107,10 +105,7 @@
       align-items: center;
       margin-right: 20px;
 
-      .language-container {
-        margin-right: 10px;
-      }
-      .fullscreen-container {
+      .icon-container {
         margin-right: 10px;
       }
       .avatar-container {

@@ -1,5 +1,5 @@
 <template>
-  <div class="search-wrapper" @click="handleOpen">
+  <div class="search-wrapper" @click="handleOpen" id="guide-search">
     <svg-icon icon="search" className="search-icon" />
   </div>
 
