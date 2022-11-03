@@ -1,5 +1,7 @@
 import path from 'path-browserify'
 import { RouteRecordRaw } from 'vue-router'
+import { SearchPoolItem } from '#/sys'
+import { generateTitle } from './i18n'
 
 /**
  * 返回所有子路由
@@ -67,6 +69,21 @@ export const generateMenus = (routes: RouteRecordRaw[], basePath = '') => {
     // 存在 children 进入迭代到children
     if (item.children) {
       route.children!.push(...generateMenus(item.children, route.path))
+    }
+  })
+  return result
+}
+
+export const generateSearchPool = (routes: RouteRecordRaw[], parent: string[] = []) => {
+  const result: SearchPoolItem[] = []
+  routes.forEach((route) => {
+    const a: SearchPoolItem = {
+      path: route.path,
+      title: [...parent, generateTitle(route?.meta?.title as string)],
+    }
+    result.push(a)
+    if (route!.children!.length > 0) {
+      result.push(...generateSearchPool(route.children || [], a.title))
     }
   })
   return result

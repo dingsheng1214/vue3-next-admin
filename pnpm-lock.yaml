@@ -20,6 +20,7 @@ specifiers:
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-vue: ^9.4.0
+  fuse.js: ^6.6.2
   husky: ^8.0.1
   lint-staged: ^13.0.3
   path-browserify: ^1.0.1
@@ -41,6 +42,7 @@ dependencies:
   '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.1.0+vue@3.2.38
   axios: 1.1.3
   element-plus: 2.2.19_vue@3.2.38
+  fuse.js: 6.6.2
   path-browserify: 1.0.1
   pinia: 2.0.21_pj7ch6rmow6odq73xb5hfvge3q
   screenfull: 6.0.2
@@ -2901,6 +2903,11 @@ packages:
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}

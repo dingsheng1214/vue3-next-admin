@@ -18,6 +18,11 @@
     <div class="right-menu">
       <!-- 全屏切换 -->
       <div class="fullscreen-container">
+        <Search />
+      </div>
+
+      <!-- 全屏切换 -->
+      <div class="fullscreen-container">
         <FullScrren />
       </div>
 
@@ -55,6 +60,7 @@
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
   import LangSelect from '@/components/LangSelect/index.vue'
   import FullScrren from '@/components/FullScreen/index.vue'
+  import Search from '@/components/Search/index.vue'
   import { useUserStore, useUiStore } from '@/store'
 
   const router = useRouter()

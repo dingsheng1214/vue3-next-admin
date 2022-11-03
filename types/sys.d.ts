@@ -17,3 +17,11 @@ export interface UserInfo {
   role: Role[]
   permission: Permission
 }
+
+/**
+ * 搜索结果
+ */
+export interface SearchPoolItem {
+  path: string
+  title: string[]
+}
