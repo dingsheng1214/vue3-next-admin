@@ -26,6 +26,7 @@ specifiers:
   pinia: ^2.0.21
   prettier: ^2.7.1
   sass: ^1.54.8
+  screenfull: ^6.0.2
   typescript: '*'
   vite: ^3.1.0
   vite-plugin-svg-icons: ^2.0.1
@@ -42,6 +43,7 @@ dependencies:
   element-plus: 2.2.19_vue@3.2.38
   path-browserify: 1.0.1
   pinia: 2.0.21_pj7ch6rmow6odq73xb5hfvge3q
+  screenfull: 6.0.2
   vite: 3.1.0_sass@1.54.8
   vue: 3.2.38
   vue-i18n: 9.2.2_vue@3.2.38
@@ -4527,6 +4529,11 @@ packages:
       chokidar: 3.5.3
       immutable: 4.1.0
       source-map-js: 1.0.2
+
+  /screenfull/6.0.2:
+    resolution: {integrity: sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}

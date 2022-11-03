@@ -16,10 +16,16 @@
     </div>
 
     <div class="right-menu">
+      <!-- 全屏切换 -->
+      <div class="fullscreen-container">
+        <FullScrren />
+      </div>
+
       <!-- 国际化 -->
       <div class="language-container">
         <LangSelect />
       </div>
+
       <!-- 头像 -->
       <div class="avatar-container">
         <el-dropdown>
@@ -48,6 +54,7 @@
   import { useRouter } from 'vue-router'
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
   import LangSelect from '@/components/LangSelect/index.vue'
+  import FullScrren from '@/components/FullScreen/index.vue'
   import { useUserStore, useUiStore } from '@/store'
 
   const router = useRouter()
@@ -95,6 +102,9 @@
       margin-right: 20px;
 
       .language-container {
+        margin-right: 10px;
+      }
+      .fullscreen-container {
         margin-right: 10px;
       }
       .avatar-container {

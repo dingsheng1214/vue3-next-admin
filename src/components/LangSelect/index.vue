@@ -31,8 +31,8 @@
 </script>
 <style lang="scss" scoped>
   :global(.language-icon) {
-    width: 2em !important;
-    height: 2em !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .language-wrapper {
     cursor: pointer;
