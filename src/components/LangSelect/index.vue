@@ -1,9 +1,14 @@
 <template>
-  <el-dropdown class="language-wrapper" @command="handleLanguageChange" trigger="click">
+  <el-dropdown
+    id="guide-lang"
+    class="language-wrapper"
+    @command="handleLanguageChange"
+    trigger="click"
+  >
     <span class="el-dropdown-link">
       <el-tooltip :content="$t('msg.navBar.lang')">
         <div>
-          <svg-icon id="guide-lang" icon="language" className="language-icon" />
+          <svg-icon icon="language" className="language-icon" />
         </div>
       </el-tooltip>
     </span>

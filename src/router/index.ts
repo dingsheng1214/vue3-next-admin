@@ -49,7 +49,7 @@ const privateRoutes: RouteRecordRaw[] = [
       {
         path: '/user/import',
         name: 'import',
-        component: () => import('@/views/import/index.vue'),
+        component: () => import('@/views/user-import/index.vue'),
         meta: {
           title: 'excelImport',
         },

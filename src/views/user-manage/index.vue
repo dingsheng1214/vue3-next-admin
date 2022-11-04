@@ -2,7 +2,7 @@
   <div class="user-manage-container">
     <el-card class="card">
       <div style="margin-top: 20px">
-        <el-button type="primary">Excel导入</el-button>
+        <el-button type="primary" @click="goUploadExcel">Excel导入</el-button>
         <el-button type="success">Excel导出</el-button>
       </div>
       <div style="margin-top: 20px; text-align: right">
@@ -55,8 +55,10 @@
 
 <script setup lang="ts">
   import { onMounted, ref, unref } from 'vue'
+  import { useRouter } from 'vue-router'
   import { getUserList } from '@/api/user'
 
+  const router = useRouter()
   const tableData = ref<any>([])
   const total = ref(0)
   const page = ref(1)
@@ -66,7 +68,6 @@
     const res = await getUserList({ page: unref(page), size: unref(size) })
     tableData.value = res.list
     total.value = res.total
-    console.log(res)
   }
 
   onMounted(async () => {
@@ -74,6 +75,9 @@
   })
   const handleSizeChange = () => {}
   const handleCurrentChange = () => {}
+  const goUploadExcel = () => {
+    router.push('/user/import')
+  }
 </script>
 
 <style lang="scss" scoped>
