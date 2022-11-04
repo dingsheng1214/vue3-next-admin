@@ -27,6 +27,9 @@ import { i18n } from '@/assets/js/i18n'
 import { getItem } from '@/assets/js/utils/storage'
 import { LANGUAGE } from '@/assets/js/utils/constant'
 
+// 注册全局属性或方法
+import installFilters from '@/assets/js/filter'
+
 const app = createApp(App)
   .use(router)
   .use(store)
@@ -36,4 +39,5 @@ const app = createApp(App)
   })
 app.component('svg-icon', SvgIcon)
 
+installFilters(app)
 app.mount('#app')

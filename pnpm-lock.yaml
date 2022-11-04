@@ -11,6 +11,7 @@ specifiers:
   '@vitejs/plugin-vue-jsx': ^2.0.1
   axios: ^1.1.3
   cz-customizable: ^7.0.0
+  dayjs: ^1.11.6
   driver.js: ^0.9.8
   element-plus: ^2.2.19
   eslint: ^8.0.1
@@ -42,6 +43,7 @@ dependencies:
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.38
   '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.1.0+vue@3.2.38
   axios: 1.1.3
+  dayjs: 1.11.6
   driver.js: 0.9.8
   element-plus: 2.2.19_vue@3.2.38
   fuse.js: 6.6.2

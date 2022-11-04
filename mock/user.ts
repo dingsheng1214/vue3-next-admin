@@ -30,3 +30,44 @@ export const sysProfile = {
   },
   message: '获取资料成功',
 }
+
+export const userList = {
+  success: true,
+  code: 200,
+  data: {
+    list: [
+      {
+        role: [
+          {
+            id: '1',
+            title: '超级管理员',
+          },
+        ],
+        _id: '612710a0ec87aa543c9c341d',
+        id: '0',
+        openTime: '1433088000000',
+        username: 'super-admin',
+        mobile: '188xxxx0001',
+        avatar: 'https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png',
+      },
+      {
+        role: [
+          {
+            id: '2',
+            title: '管理员',
+          },
+        ],
+        _id: '612710a0ec87aa543c9c341e',
+        id: '1',
+        username: 'admin',
+        openTime: '1559318400000',
+        mobile: '188xxxx0002',
+        avatar: 'https://img4.sycdn.imooc.com/61110c2b0001152907400741-140-140.jpg',
+      },
+    ],
+    total: 7,
+    page: '1',
+    size: '2',
+  },
+  message: 'success',
+}
