@@ -47,6 +47,7 @@ export const useUserStore = defineStore({
     async getUserInfo() {
       const res = await getUserInfo({ token: this.token })
       this.setUserInfo(res)
+      return res
     },
     setToken(token: string) {
       this.token = token
